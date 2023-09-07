@@ -16,12 +16,12 @@ app.get('/api', (req, res) => {
   const currentUtcTime = new Date().toISOString();
 
   // Construct GitHub URLs
-  const githubFileUrl = 'https://github.com/username/repo/blob/main/file_name.ext';
-  const githubRepoUrl = 'https://github.com/username/repo';
+  const githubFileUrl = 'https://github.com/Kmart002/backend-track1/blob/main/index.js';
+  const githubRepoUrl = 'https://github.com/Kmart002/backend-track1';
 
   // Prepare response JSON
   const response = {
-    slack_name: slackName,
+    slack_name: Karimat-Abolarinwa,
     current_day: currentDay,
     utc_time: currentUtcTime,
     track: track,
