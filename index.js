@@ -1,6 +1,7 @@
 const express = require('express');
+const moment = require("moment");
 const app = express();
-const port = process.env.PORT || 3000; // Use the provided PORT or 3000 if running locally
+const port = process.env.PORT || 3001; // Use the provided PORT or 3001 if running locally
 
 app.get('/api', (req, res) => {
   // Get query parameters
@@ -12,8 +13,14 @@ app.get('/api', (req, res) => {
   const currentDate = new Date();
   const currentDay = daysOfWeek[currentDate.getUTCDay()];
 
-  // Get current UTC time
-  const currentUtcTime = new Date().toISOString();
+ // Get the current time in UTC
+ const currentUtcTime = moment().utc();
+
+ // Add 1 hour to the current time
+ const adjustedTime = currentUtcTime.add(1, 'hour');
+
+ // Format the adjusted time in the desired format
+ const adjustedUtcTime = adjustedTime.format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
 
   // Construct GitHub URLs
   const githubFileUrl = 'https://github.com/Kmart002/backend-track1/blob/main/index.js';
@@ -23,7 +30,7 @@ app.get('/api', (req, res) => {
   const response = {
     slack_name: slackName,
     current_day: currentDay,
-    utc_time: currentUtcTime,
+   utc_time: adjustedUtcTime,
     track: track,
     github_file_url: githubFileUrl,
     github_repo_url: githubRepoUrl,
