@@ -3,7 +3,7 @@ const moment = require("moment");
 const app = express();
 const port = process.env.PORT || 3001; // Use the provided PORT or 3001 if running locally
 
-app.get('/api', (req, res) => {
+app.get('/api/:slack_name/:track', (req, res) => {
   // Get query parameters
   const slackName = req.query.slack_name;
   const track = req.query.track;
