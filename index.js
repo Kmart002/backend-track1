@@ -21,7 +21,7 @@ app.get('/api', (req, res) => {
 
   // Prepare response JSON
   const response = {
-    slack_name: Karimat-Abolarinwa,
+    slack_name: slackName,
     current_day: currentDay,
     utc_time: currentUtcTime,
     track: track,
