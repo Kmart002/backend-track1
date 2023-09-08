@@ -20,8 +20,8 @@ app.get('/api/', (req, res) => {
   const randomMinutes = Math.floor(Math.random() * 5) - 2;
   const adjustedTime = currentUtcTime.add(randomMinutes, 'minutes');
 
-  // Format the adjusted time in the desired format
-  const adjustedUtcTime = adjustedTime.format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+  // Format the adjusted time in the desired format (2023-09-08T09:40:16Z)
+  const formattedUtcTime = adjustedTime.format('YYYY-MM-DDTHH:mm:ss[Z]');
 
   // Construct GitHub URLs
   const githubFileUrl = 'https://github.com/Kmart002/backend-track1/blob/main/index.js';
@@ -31,7 +31,7 @@ app.get('/api/', (req, res) => {
   const response = {
     slack_name: slackName,
     current_day: currentDay,
-    utc_time: adjustedUtcTime,
+    utc_time: formattedUtcTime,
     track: track,
     github_file_url: githubFileUrl,
     github_repo_url: githubRepoUrl,
